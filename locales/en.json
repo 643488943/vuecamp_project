@@ -9,5 +9,11 @@
   "change dark": "Click to switch to dark theme",
   "change lang": "Switch languages",
   "method to using": "Method of using template",
-  "template process": "Template configuration process"
+  "template process": "Template configuration process",
+  "welcome login": "Welcome",
+  "please input accont": "Please input accont",
+  "please input password": "Please input password",
+  "account": "account",
+  "password": "password",
+  "login": "login"
 }

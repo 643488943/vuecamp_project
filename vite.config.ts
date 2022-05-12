@@ -1,5 +1,7 @@
 import { defineConfig, loadEnv } from 'vite';
 import { resolve } from 'path';
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
 import presets from './presets/presets';
 
 // https://vitejs.dev/config/
@@ -10,7 +12,25 @@ export default defineConfig((env) => {
   return {
     base: viteEnv.VITE_BASE,
     // 插件
-    plugins: [presets(env)],
+    plugins: [
+      presets(env),
+      AutoImport({
+        dts: './src/auto-imports.d.ts',
+        imports: ['vue', 'pinia', 'vue-router', '@vueuse/core'],
+        // Generate corresponding .eslintrc-auto-import.json file.
+        // eslint globals Docs - https://eslint.org/docs/user-guide/configuring/language-options#specifying-globals
+        eslintrc: {
+          enabled: true, // Default `false`
+          filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
+          globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+        },
+      }),
+      Components({
+        dts: './src/components.d.ts',
+        // imports 指定组件所在位置，默认为 src/components
+        dirs: ['src/components/'],
+      }),
+    ],
     // 别名设置
     resolve: {
       alias: {

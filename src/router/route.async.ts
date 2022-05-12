@@ -9,7 +9,7 @@ const asyncRoutes: Array<RouteRecordRaw> = [
       title: '',
       icon: '',
     },
-    component: () => import('@/views/home/index.vue'),
+    component: () => import('@/views/home/login.vue'),
   },
   {
     path: '/process',

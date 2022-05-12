@@ -18,7 +18,8 @@ module.exports = {
     'airbnb-base',
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-recommended',
-    'plugin:prettier/recommended', // 添加 prettier 插件
+    'plugin:prettier/recommended',
+    './.eslintrc-auto-import.json', // 添加 prettier 插件
   ],
   parserOptions: {
     ecmaVersion: 'latest',

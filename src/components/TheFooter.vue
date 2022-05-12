@@ -41,11 +41,16 @@
 
 <script setup lang="ts">
 import { isDark, toggleDark } from '@/utils/dark';
+import { lang } from '../store/lang';
+
+const langStore = lang();
 
 const { t, availableLocales, locale } = useI18n();
 const toggleLocales = () => {
   const locales = availableLocales;
   locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length];
+  console.log(locale.value);
+  langStore.setLocale(locale.value);
 };
 </script>
 
