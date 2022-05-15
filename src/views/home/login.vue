@@ -9,8 +9,12 @@
         >{{ t('password') }}<el-input v-model="password" type="password" class="pb-3" clearable show-password
       /></label>
       <center>
-        <el-button type="primary" class="font-serif font-bold" round>{{ t('login') }}</el-button>
+        <el-button type="primary" class="font-serif font-bold" round @click="handleRegister">{{
+          t('register')
+        }}</el-button>
+        <el-button type="primary" class="font-serif font-bold" round @click="handleLogin">{{ t('login') }}</el-button>
       </center>
+      <a-divider />
     </div>
   </div>
 </template>
@@ -19,23 +23,37 @@
 import { ref } from 'vue';
 import { lang } from '@/store/lang';
 
+const account = ref('');
+const password = ref('');
+const router = useRouter();
+const route = useRoute();
+const handleRegister = () => {
+  router.push({
+    name: 'register',
+  });
+};
+const handleLogin = () => {
+  router.push({
+    name: 'hello',
+    query: {},
+  });
+};
+
 const langStore = lang();
 
 const { t } = useI18n();
-
-const account = ref('');
-const password = ref('');
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .log-container {
   display: block;
   height: 50vh;
   width: 50vm;
   overflow: hidden;
-  border: 1px solid gainsboro;
   padding: 10vm;
   margin-top: 25vh;
   position: relative;
+  border-radius: 80px;
+  box-shadow: 5px 5px 13px #8a8a8a, -5px -5px 13px #ffffff;
 
   .log-form {
     width: 90%;

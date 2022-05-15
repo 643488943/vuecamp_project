@@ -15,5 +15,6 @@
   "please input password": "Please input password",
   "account": "account",
   "password": "password",
-  "login": "login"
+  "login": "login",
+  "register": "register"
 }

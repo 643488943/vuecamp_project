@@ -2,8 +2,8 @@ import { defineConfig, loadEnv } from 'vite';
 import { resolve } from 'path';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver, AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 import presets from './presets/presets';
-
 // https://vitejs.dev/config/
 export default defineConfig((env) => {
   // env 环境变量
@@ -17,6 +17,7 @@ export default defineConfig((env) => {
       AutoImport({
         dts: './src/auto-imports.d.ts',
         imports: ['vue', 'pinia', 'vue-router', '@vueuse/core'],
+        resolvers: [AntDesignVueResolver(), ElementPlusResolver()],
         // Generate corresponding .eslintrc-auto-import.json file.
         // eslint globals Docs - https://eslint.org/docs/user-guide/configuring/language-options#specifying-globals
         eslintrc: {
@@ -29,6 +30,8 @@ export default defineConfig((env) => {
         dts: './src/components.d.ts',
         // imports 指定组件所在位置，默认为 src/components
         dirs: ['src/components/'],
+        extensions: ['vue'],
+        resolvers: [AntDesignVueResolver()],
       }),
     ],
     // 别名设置
